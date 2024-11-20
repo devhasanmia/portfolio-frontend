@@ -1,7 +1,9 @@
 import AboutUs from "@/components/AboutUs";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import RecentProjects from "@/components/RecentProjects";
 
 export default function Home() {
   return (
@@ -12,7 +14,9 @@ export default function Home() {
         <Hero />
         <AboutUs />
         <br />
-        <Footer />
+        <RecentProjects/>
+        <Contact/>
+        <Footer />  
       </div>
     </main>
   );
