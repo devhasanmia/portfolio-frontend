@@ -1,61 +1,13 @@
+"use client"
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
+import { useGetAllSkillsQuery } from "@/redux/services/skill/skillApi";
+import { TSkills } from "@/types/skill.type";
 import React from "react";
 
-export type TSkills = {
-  title: string;
-  shortDescription: string;
-  experienceMonths: number;
-  experienceYears: number;
-};
-
 const Skills = () => {
-  const skills: TSkills[] = [
-    {
-      title: "ReactJS",
-      shortDescription: "Build dynamic user interfaces efficiently.",
-      experienceMonths: 24,
-      experienceYears: 2,
-    },
-    {
-      title: "Next.js",
-      shortDescription: "React framework for server-side rendering and SEO.",
-      experienceMonths: 18,
-      experienceYears: 1,
-    },
-    {
-      title: "Tailwind CSS",
-      shortDescription: "Utility-first CSS framework for rapid UI design.",
-      experienceMonths: 12,
-      experienceYears: 1,
-    },
-    {
-      title: "Node.js",
-      shortDescription: "Server-side JavaScript for building scalable apps.",
-      experienceMonths: 36,
-      experienceYears: 3,
-    },
-    {
-      title: "Mongoose",
-      shortDescription: "Object Data Modeling (ODM) for MongoDB.",
-      experienceMonths: 24,
-      experienceYears: 2,
-    },
-    {
-      title: "MongoDB",
-      shortDescription: "NoSQL database for modern applications.",
-      experienceMonths: 30,
-      experienceYears: 2,
-    },
-    {
-      title: "Express.js",
-      shortDescription: "Minimalist Node.js web application framework.",
-      experienceMonths: 36,
-      experienceYears: 3,
-    },
-  ];
-
+  const {data: skills} = useGetAllSkillsQuery("")
   return (
-    <section className=" text-white py-16 mt-5 px-5">
+    <div className=" text-white py-16 mt-5 px-5">
         <TextGenerateEffect
             className="text-3xl md:text-4xl lg:text-5xl text-center font-bold text-white"
             duration={2}
@@ -66,7 +18,7 @@ const Skills = () => {
         </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-12 py-6">
-        {skills.map((skill, index) => (
+        {skills?.data?.map((skill: TSkills, index: number) => (
           <div
             key={index}
             className="relative flex flex-col items-center border border-gray-700 p-6 rounded-lg shadow-lg hover:shadow-2xl hover:translate-y-[-5px] transition-all duration-300"
@@ -82,12 +34,20 @@ const Skills = () => {
             <p className="text-gray-300 text-center leading-relaxed">
               {skill.shortDescription}
             </p>
-
             <div className="mt-4 w-20 h-1 bg-blue-500 rounded-full"></div>
           </div>
         ))}
       </div>
-    </section>
+        {/* Back-to-top button */}
+        <div className="fixed bottom-10 right-10">
+        <a
+          href="#"
+          className="bg-emerald-400 text-white p-4 rounded-full shadow-lg transform transition-all hover:scale-110"
+        >
+          ↑
+        </a>
+      </div>
+    </div>
   );
 };
 

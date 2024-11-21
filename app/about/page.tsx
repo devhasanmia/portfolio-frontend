@@ -4,6 +4,8 @@ import Image from "next/image";
 import myImag from "../../public/hasan.jpg";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 import MagicButton from "@/components/ui/MagicButton";
+import Link from "next/link";
+import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 
 const AboutUs = () => {
   return (
@@ -22,7 +24,7 @@ const AboutUs = () => {
           <TextGenerateEffect
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-white"
             duration={2}
-            words={`Who We Are`}
+            words={`Who I'm`}
           />
           <div className="mt-4 w-20 h-1 bg-blue-500 rounded-full"></div>
           <p className="text-lg text-gray-300">
@@ -36,10 +38,31 @@ const AboutUs = () => {
             technologies, we pride ourselves on our ability to solve complex
             problems with elegant solutions.
           </p>
+          <div className="flex gap-6 text-2xl text-white ">
+            <a href="https://github.com/devhasanmia" target="_blank" className="hover:text-gray-400">
+              <FaGithub />
+            </a>
+            <a href="https://www.linkedin.com/in/hasanmiaweb/" target="_blank" className="hover:text-blue-600">
+              <FaLinkedin />
+            </a>
+            <a href="https://www.facebook.com/hasanmiadev1/" target="_blank" className="hover:text-blue-400">
+              <FaFacebook />
+            </a>
+          </div>
+          <div className="flex gap-2  text-white">
+            {/* Email & Phone */}
+            <a href="#" className="hover:text-blue-400">
+            ✉️ hasanmiaweb@gmail.com
+            </a>
+            <span className="text-white">|</span>
+            <a href="tel:+88 01740-398196" className="hover:text-blue-400">
+              📞 +88 01740-398196
+            </a>
+          </div>
           <br />
-          <a className="mt-5" href="/contact">
+          <Link className="mt-5" href="/contact">
             <MagicButton title="Contact Me" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

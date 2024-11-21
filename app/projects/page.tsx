@@ -1,53 +1,14 @@
 "use client";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
-import React, { useState } from "react";
-
-const projects = [
-  {
-    id: 1,
-    title: "Meeting Room Project",
-    description:
-      "An advanced system for booking and managing meeting rooms seamlessly.",
-    image: "/hasan.jpg",
-    link: "/projects/meeting-room",
-  },
-  {
-    id: 2,
-    title: "E-Commerce Platform",
-    description:
-      "A scalable e-commerce platform with real-time cart and payment integration.",
-    image: "/hasan.jpg",
-    link: "/projects/ecommerce",
-  },
-  {
-    id: 3,
-    title: "Portfolio Website",
-    description:
-      "A visually appealing portfolio site to showcase creative works.",
-    image: "/hasan.jpg",
-    link: "../public/hasan.jpg",
-  },
-  {
-    id: 4,
-    title: "Portfolio Website",
-    description:
-      "A visually appealing portfolio site to showcase creative works.",
-    image: "/hasan.jpg",
-    link: "../public/hasan.jpg",
-  },
-  {
-    id: 5,
-    title: "Portfolio Website",
-    description:
-      "A visually appealing portfolio site to showcase creative works.",
-    image: "/hasan.jpg",
-    link: "../public/hasan.jpg",
-  },
-];
+import { useGetAllProjectsQuery } from "@/redux/services/project/projectApi";
+import { TProject } from "@/types/project.type";
+import Link from "next/link";
 
 const RecentProjects = () => {
+  const {data: projects} = useGetAllProjectsQuery("");
+  
   return (
-    <section className="py-20  text-white">
+    <section className="py-20 min-h-screen  text-white">
       <div className="container mx-auto px-6 lg:px-12">
         <TextGenerateEffect
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-white"
@@ -60,14 +21,14 @@ const RecentProjects = () => {
         <div className="mt-4 w-20 h-1 bg-blue-500 rounded-full"></div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-12">
-          {projects.map((project) => (
+          {projects?.data?.map((project: TProject) => (
             <div
-              key={project.id}
+              key={project._id}
               className="relative group border border-gray-700 rounded-xl shadow-md overflow-hidden  transform transition-all duration-300 hover:scale-105"
             >
               <div className="relative">
                 <img
-                  src={project.image}
+                  src={project.thumbnail}
                   alt={project.title}
                   className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-110"
                 />
@@ -81,13 +42,13 @@ const RecentProjects = () => {
                 </h3>
                 <p className="text-gray-400">{project.description}</p>
                 <div className="flex gap-3 mt-4">
-                  <button
+                  <Link href={`/projects/${project._id}`}
                     className="px-6 py-2 bg-emerald-500 text-white rounded-lg transition-transform transform hover:scale-105"
                   >
                     View Details
-                  </button>
+                  </Link>
                   <a
-                    href={project.link}
+                    href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-6 py-2 bg-blue-600 text-white rounded-lg transition-transform transform hover:scale-105"
@@ -99,6 +60,15 @@ const RecentProjects = () => {
             </div>
           ))}
         </div>
+      </div>
+        {/* Back-to-top button */}
+        <div className="fixed bottom-10 right-10">
+        <a
+          href="#"
+          className="bg-emerald-400 text-white p-4 rounded-full shadow-lg transform transition-all hover:scale-110"
+        >
+          ↑
+        </a>
       </div>
     </section>
   );

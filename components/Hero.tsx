@@ -4,6 +4,7 @@ import MagicButton from "./ui/MagicButton";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import { FiDownload } from "react-icons/fi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -35,13 +36,13 @@ const Hero = () => {
                 position="left"
               />
             </a>
-            <a href="#explore">
+            <Link href="/about">
               <MagicButton
                 title="Explore More"
                 icon={<FaLocationArrow />}
                 position="left"
               />
-            </a>
+            </Link>
           </div>
 
           <div className="flex gap-2  text-white">
