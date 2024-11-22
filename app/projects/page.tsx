@@ -40,7 +40,6 @@ const RecentProjects = () => {
                 <h3 className="text-2xl font-semibold text-white">
                   {project.title}
                 </h3>
-                <p className="text-gray-400">{project.description}</p>
                 <div className="flex gap-3 mt-4">
                   <Link href={`/projects/${project._id}`}
                     className="px-6 py-2 bg-emerald-500 text-white rounded-lg transition-transform transform hover:scale-105"

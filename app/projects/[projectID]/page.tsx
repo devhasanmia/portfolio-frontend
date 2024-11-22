@@ -35,11 +35,11 @@ const Projects = () => {
       <div className="container mx-auto px-6 lg:px-12 space-y-10">
         {/* Parallax Hero Section */}
         <div className="relative overflow-hidden rounded-lg shadow-xl">
-          <div className="parallax-effect w-full h-96">
+          <div className="parallax-effect w-full h-full">
             <img
               src={thumbnail}
               alt={title}
-              className="w-full h-full object-cover"
+              className="w-full h-full "
             />
           </div>
           <div className="absolute inset-0"></div>
@@ -75,26 +75,29 @@ const Projects = () => {
               ))}
             </div>
 
-        
-
-          
-
             {/* Published Date */}
             <div className="mt-4 text-sm text-gray-500">
               <p>Published on: {new Date(createdAt).toLocaleDateString()}</p>
             </div>
           </div>
-          <p className="text-lg leading-relaxed text-gray-300">{description}</p>
+          {/* How html Templete */}
+          {description && (
+            <div
+              className="text-lg leading-relaxed text-gray-300"
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
+          )}
+          {/* <p className="text-lg leading-relaxed text-gray-300">{description}</p> */}
         </motion.div>
-                {/* Contributors Section */}
-                <div className="mt-6">
-              <p className="text-lg font-semibold">Contributors:</p>
-              <ul className="list-disc pl-5 space-y-2 text-gray-300">
-                {contributors?.map((contributor: string, index: number) => (
-                  <li key={index}>{contributor}</li>
-                ))}
-              </ul>
-            </div>
+        {/* Contributors Section */}
+        <div className="mt-6">
+          <p className="text-lg font-semibold">Contributors:</p>
+          <ul className="list-disc pl-5 space-y-2 text-gray-300">
+            {contributors?.map((contributor: string, index: number) => (
+              <li key={index}>{contributor}</li>
+            ))}
+          </ul>
+        </div>
         {/* Action Buttons */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -124,9 +127,7 @@ const Projects = () => {
               Live Demo
             </a>
           )}
-   
         </motion.div>
-         
       </div>
 
       {/* Back-to-top button */}
