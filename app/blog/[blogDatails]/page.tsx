@@ -1,5 +1,6 @@
 "use client";
 import { useGetBlogByIdQuery } from "@/redux/services/blog/BlogApi";
+import Image from "next/image";
 import { useParams } from "next/navigation";
 
 const BlogDetails = () => {
@@ -19,9 +20,11 @@ const BlogDetails = () => {
     <div className=" text-white mt-10">
       <div className="container mx-auto py-12 px-6 lg:px-12">
         <div className="mb-10">
-          <img
+          <Image
             src={thumbnail}
             alt={title}
+            width={500}
+            height={500}
             className="w-full h-full object-cover rounded-lg shadow-lg"
           />
           <h1 className="text-4xl font-bold mt-6 mb-2">{title}</h1>

@@ -6,12 +6,13 @@ import React from "react";
 
 const Skills = () => {
   const {data: skills} = useGetAllSkillsQuery("")
+  const words= "Skills"
   return (
     <div className=" text-white py-16 mt-5 px-5">
         <TextGenerateEffect
             className="text-3xl md:text-4xl lg:text-5xl text-center font-bold text-white"
             duration={2}
-            words={`Skills`}
+            words={words}
           />
         <p className="text-lg text-center text-purple-400 mt-2">
           My extensive skill set covers various technologies and frameworks.

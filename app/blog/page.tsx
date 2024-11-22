@@ -2,6 +2,7 @@
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 import { useGetAllBlogQuery } from "@/redux/services/blog/BlogApi";
 import { TBlog } from "@/types/blog.type";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -26,9 +27,11 @@ const Blog = () => {
               key={post._id}
               className="border-2 border-gray-900 rounded-lg shadow-lg overflow-hidden"
             >
-              <img
+              <Image
                 src={post.thumbnail}
                 alt={post.title}
+                width={300}
+                height={48}
                 className="w-full h-48 object-cover"
               />
 

@@ -1,8 +1,9 @@
 "use client";
 import { useGetProjectByIdQuery } from "@/redux/services/project/projectApi";
 import { useParams } from "next/navigation";
-import { FaGithub, FaLink } from "react-icons/fa"; // For icons
-import { motion } from "framer-motion"; // Smooth scroll animations
+import { FaGithub, FaLink } from "react-icons/fa";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 const Projects = () => {
   const { projectID } = useParams();
@@ -27,7 +28,6 @@ const Projects = () => {
     contributors,
     projectType,
     createdAt,
-    status,
   } = project?.data || {};
 
   return (
@@ -36,10 +36,13 @@ const Projects = () => {
         {/* Parallax Hero Section */}
         <div className="relative overflow-hidden rounded-lg shadow-xl">
           <div className="parallax-effect w-full h-full">
-            <img
+            <Image
               src={thumbnail}
               alt={title}
-              className="w-full h-full "
+              width={500}
+              height={300}
+              layout="responsive" 
+              className="w-full h-full"
             />
           </div>
           <div className="absolute inset-0"></div>
