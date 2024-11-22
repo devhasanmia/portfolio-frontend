@@ -1,4 +1,16 @@
 {
-    "rewrites": [{ "source": "/(.*)", "destination": "/" }]
-  }
-  
+  "rewrites": [
+    {
+      "source": "/blog/:blogDatails",
+      "destination": "/blog/:blogDatails"
+    },
+    {
+      "source": "/projects/:projectID",
+      "destination": "/projects/:projectID"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}

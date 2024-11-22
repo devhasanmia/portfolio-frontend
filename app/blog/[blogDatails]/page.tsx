@@ -50,8 +50,8 @@ const BlogDetails = () => {
           ))}
         </div>
       </div>
-        {/* Back-to-top button */}
-        <div className="fixed bottom-10 right-10">
+      {/* Back-to-top button */}
+      <div className="fixed bottom-10 right-10">
         <a
           href="#"
           className="bg-emerald-400 text-white p-4 rounded-full shadow-lg transform transition-all hover:scale-110"

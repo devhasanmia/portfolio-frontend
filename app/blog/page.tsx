@@ -7,7 +7,18 @@ import Link from "next/link";
 import React from "react";
 
 const Blog = () => {
-  const { data: blogPosts } = useGetAllBlogQuery("");
+  const { data: blogPosts, isLoading, isError } = useGetAllBlogQuery("");
+
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="text-pink-500 text-5xl font-semibold animate-pulse">
+          Please wait...
+        </div>
+      </div>
+    );
+  if (isError) return <div>Something went wrong!</div>;
+
   return (
     <div className="py-20 text-white">
       <div className="container mx-auto px-6 lg:px-12">
@@ -29,7 +40,7 @@ const Blog = () => {
             >
               <Image
                 src={post.thumbnail}
-                alt={post.title}
+                alt={`Thumbnail for ${post.title}`}
                 width={300}
                 height={48}
                 className="w-full h-48 object-cover"
@@ -43,17 +54,15 @@ const Blog = () => {
                   {post.title}
                 </Link>
                 <div className="flex items-center text-gray-400 mb-3">
-                 <span className="mr-4">
-                    <i className="fas fa-user"></i> By {post.author}
-                  </span>
+                  <span className="mr-4">By {post.author}</span>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
-        {/* Back-to-top button */}
-        <div className="fixed bottom-10 right-10">
+      {/* Back-to-top button */}
+      <div className="fixed bottom-10 right-10">
         <a
           href="#"
           className="bg-emerald-400 text-white p-4 rounded-full shadow-lg transform transition-all hover:scale-110"

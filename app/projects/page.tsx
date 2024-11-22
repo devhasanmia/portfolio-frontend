@@ -6,8 +6,15 @@ import Image from "next/image";
 import Link from "next/link";
 
 const RecentProjects = () => {
-  const { data: projects } = useGetAllProjectsQuery("");
-
+  const { data: projects, isFetching } = useGetAllProjectsQuery("");
+  if (isFetching)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="text-pink-500 text-5xl font-semibold animate-pulse">
+          Please wait...
+        </div>
+      </div>
+    );
   return (
     <section className="py-20 min-h-screen  text-white">
       <div className="container mx-auto px-6 lg:px-12">
